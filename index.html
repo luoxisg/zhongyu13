@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhongyu's Epic 13th Birthday BBQ Bash: The Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!--
+    Narrative & Structure Plan:
+    1.  Hero Section: Hook with the core facts (13th Birthday, 10 Friends, S$200 Budget) using large stats.
+    2.  Project Team Section: Introduce the "Party Committee" using styled cards to highlight each role.
+    3.  Budget Breakdown Section: Visualize the S$204.06 budget with a donut chart for the main split and a bar chart for the detailed food costs.
+    4.  Timeline Section: Display the party schedule from 3:00 PM to 9:30 PM using a custom HTML/CSS vertical timeline.
+    5.  Activities Section: Showcase the planned games in an organized, visually appealing way using a card-based layout.
+    
+    Visualization Plan:
+    -   Data Point: Core Party Stats -> Goal: Inform -> Visualization: Large, bold text ("Single Big Number" style). Justification: Immediately grabs attention and conveys key info. Method: HTML/CSS.
+    -   Data Point: Party Committee Roles -> Goal: Organize -> Visualization: HTML/CSS Cards with Unicode Icons. Justification: Clearly segments roles without using images/SVG. Method: HTML/CSS.
+    -   Data Point: Budget Allocation (Food vs. Supplies) -> Goal: Compare -> Visualization: Chart.js Donut Chart. Justification: Excellent for showing part-to-whole relationships. Method: Chart.js Canvas.
+    -   Data Point: Food Category Costs -> Goal: Compare -> Visualization: Chart.js Horizontal Bar Chart. Justification: Best for comparing the values of discrete categories with potentially long labels. Method: Chart.js Canvas.
+    -   Data Point: Party Schedule -> Goal: Change/Organize -> Visualization: Custom Vertical Timeline. Justification: Shows chronological flow clearly without using prohibited libraries. Method: HTML/CSS.
+    -   Data Point: Planned Games -> Goal: Organize -> Visualization: HTML/CSS Cards in a grid. Justification: Groups related information cleanly. Method: HTML/CSS.
+    -   NO SVG was used anywhere in the output.
+    -   NO MERMAID JS was used anywhere in the output.
+
+    Color Palette Selection:
+    -   Chosen Palette: "Energetic & Playful".
+    -   HEX Codes Used: #F97316 (Orange), #14B8A6 (Teal), #FBBF24 (Yellow), #1E293B (Text), #f8fafc (Background).
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 2.5rem;
+            bottom: -2.5rem;
+            width: 4px;
+            background-color: #e2e8f0;
+            z-index: 0;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">LEVEL UP: ZHONGYU IS 13!</h1>
+            <p class="text-lg md:text-xl mt-4 text-slate-600 max-w-3xl mx-auto">Here's the master plan for an epic birthday BBQ bash at Eastpoint Green. Get ready for a day of awesome food, intense games, and non-stop fun!</p>
+        </header>
+
+        <section id="kpis" class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-16">
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
+                <p class="text-5xl font-bold text-orange-500">10</p>
+                <p class="text-lg font-bold mt-2">Best Friends Invited</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
+                <p class="text-5xl font-bold text-teal-500">S$200</p>
+                <p class="text-lg font-bold mt-2">Food & Supplies Budget</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
+                <p class="text-5xl font-bold text-yellow-500">2</p>
+                <p class="text-lg font-bold mt-2">Party Zones</p>
+                <p class="text-sm text-slate-500">(BBQ Pit & Clubhouse)</p>
+            </div>
+        </section>
+
+        <section id="team" class="mb-16">
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100">
+                <h2 class="text-3xl font-bold text-center mb-2">The Party Committee</h2>
+                <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">An epic party needs an epic team. Zhongyu has assembled a crew of his closest friends to help with the planning, making it *our* party, not just his.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <p class="text-5xl mb-3">🎮</p>
+                        <h3 class="text-xl font-bold text-slate-900">The Games Master</h3>
+                        <p class="text-slate-600 mt-1">In charge of brainstorming hilarious games for the "Clubhouse Championship."</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <p class="text-5xl mb-3">🎶</p>
+                        <h3 class="text-xl font-bold text-slate-900">The Music Maestro</h3>
+                        <p class="text-slate-600 mt-1">Curating the ultimate party playlist on a collaborative Spotify playlist for all to enjoy.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <p class="text-5xl mb-3">🎨</p>
+                        <h3 class="text-xl font-bold text-slate-900">The Decorations Chief</h3>
+                        <p class="text-slate-600 mt-1">Tasked with creating the perfect party vibe with cool, simple decorations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="budget" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">The S$200 Food Mission</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100 flex flex-col">
+                    <h3 class="text-2xl font-bold text-center mb-2">Budget Allocation</h3>
+                    <p class="text-center text-slate-600 mb-4">The plan squeezes every dollar to maximize the feast. The total estimated cost is S$204.06, with the majority going towards food and drinks.</p>
+                    <div class="chart-container flex-grow">
+                        <canvas id="budgetDonutChart"></canvas>
+                    </div>
+                </div>
+                <div class="lg:col-span-3 bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100 flex flex-col">
+                    <h3 class="text-2xl font-bold text-center mb-2">Food Cost Breakdown</h3>
+                    <p class="text-center text-slate-600 mb-4">Feeding 11 hungry teenagers requires a solid strategy. Here's where the food budget is going, with meat being the biggest expense.</p>
+                     <div class="relative flex-grow w-full max-w-3xl mx-auto min-h-[350px]">
+                        <canvas id="foodBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="mb-16">
+             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100">
+                <h2 class="text-3xl font-bold text-center mb-2">Party Day Blueprint</h2>
+                <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">A detailed schedule ensures the party runs smoothly from setup to cleanup, making full use of the "Two-Base" strategy.</p>
+                <div class="relative">
+                    <div class="space-y-12">
+                        <div class="timeline-item relative flex items-center w-full">
+                            <div class="w-1/2 flex justify-end">
+                                <div class="text-right pr-8">
+                                    <p class="font-bold text-orange-500 text-lg">3:00 PM</p>
+                                    <h3 class="font-bold text-xl mt-1">Setup & Fire Up</h3>
+                                    <p class="text-slate-600">Team arrives, decorates, and lights the BBQ coals.</p>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-orange-500 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">1</div>
+                            <div class="w-1/2"></div>
+                        </div>
+
+                        <div class="timeline-item relative flex items-center w-full">
+                            <div class="w-1/2"></div>
+                            <div class="w-10 h-10 bg-teal-500 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">2</div>
+                            <div class="w-1/2 flex justify-start">
+                                <div class="text-left pl-8">
+                                    <p class="font-bold text-teal-500 text-lg">4:00 PM</p>
+                                    <h3 class="font-bold text-xl mt-1">Guests Arrive & Grill Time</h3>
+                                    <p class="text-slate-600">Welcome friends! First round of grilling begins as guests settle in.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item relative flex items-center w-full">
+                             <div class="w-1/2 flex justify-end">
+                                <div class="text-right pr-8">
+                                    <p class="font-bold text-yellow-500 text-lg">6:45 PM</p>
+                                    <h3 class="font-bold text-xl mt-1">Clubhouse Championship</h3>
+                                    <p class="text-slate-600">Move to the air-conditioned Clubhouse for an epic game session.</p>
+                                </div>
+                            </div>
+                            <div class="w-10 h-10 bg-yellow-500 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">3</div>
+                            <div class="w-1/2"></div>
+                        </div>
+
+                         <div class="timeline-item relative flex items-center w-full">
+                            <div class="w-1/2"></div>
+                            <div class="w-10 h-10 bg-slate-800 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">4</div>
+                            <div class="w-1/2 flex justify-start">
+                                <div class="text-left pl-8">
+                                    <p class="font-bold text-slate-800 text-lg">8:15 PM</p>
+                                    <h3 class="font-bold text-xl mt-1">Cake & Marshmallows</h3>
+                                    <p class="text-slate-600">The big moment with the cake, followed by a chill marshmallow roast.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 pt-8 border-t border-slate-200">
+            <p class="text-slate-500">Infographic created for Zhongyu's Epic 13th Birthday Celebration.</p>
+            <p class="text-xs text-slate-400 mt-2">Based on the master plan from June 30, 2025.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const commonTooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        
+            const wrapLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) return label;
+
+                const words = label.split(' ');
+                let currentLine = '';
+                const lines = [];
+
+                words.forEach(word => {
+                    if ((currentLine + word).length > maxLength && currentLine.length > 0) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+
+            const budgetDonutCtx = document.getElementById('budgetDonutChart').getContext('2d');
+            new Chart(budgetDonutCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Food & Drinks', 'Supplies'],
+                    datasets: [{
+                        label: 'Budget Allocation',
+                        data: [174.06, 30.00],
+                        backgroundColor: [
+                            '#14B8A6', 
+                            '#F97316'  
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 4,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#1E293B',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            ...commonTooltipCallback.plugins.tooltip,
+                             callbacks: {
+                                ...commonTooltipCallback.plugins.tooltip.callbacks,
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += new Intl.NumberFormat('en-SG', { style: 'currency', currency: 'SGD' }).format(context.parsed);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const foodBarCtx = document.getElementById('foodBarChart').getContext('2d');
+            const foodLabels = ['Meat (Wings, Burgers, Hot Dogs)', 'Veggie (Halloumi & Veg Skewers)', 'Drinks (Soda, Tea, Water)', 'Birthday Cake', 'Snacks & Dessert (Chips, Marshmallows)', 'Carbs (Buns)', 'Salad & Veggies', 'Condiments'];
+            const wrappedFoodLabels = foodLabels.map(wrapLabel);
+            
+            new Chart(foodBarCtx, {
+                type: 'bar',
+                data: {
+                    labels: wrappedFoodLabels,
+                    datasets: [{
+                        label: 'Cost (S$)',
+                        data: [58.20, 15.00, 25.40, 40.00, 14.58, 11.50, 10.65, 2.73],
+                        backgroundColor: [
+                            '#F97316',
+                            '#14B8A6',
+                            '#FBBF24',
+                            '#334155',
+                            '#fb923c',
+                            '#5eead4',
+                            '#fde047',
+                            '#94a3b8'
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                display: true,
+                                color: '#e2e8f0'
+                            },
+                            ticks: {
+                                color: '#475569',
+                                font: {
+                                    size: 12
+                                },
+                                callback: function(value) {
+                                    return 'S$' + value;
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                             ticks: {
+                                color: '#1E293B',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                         tooltip: {
+                            ...commonTooltipCallback.plugins.tooltip,
+                             callbacks: {
+                                ...commonTooltipCallback.plugins.tooltip.callbacks,
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += new Intl.NumberFormat('en-SG', { style: 'currency', currency: 'SGD' }).format(context.parsed.x);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
