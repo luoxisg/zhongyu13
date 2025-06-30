@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zhongyu's Epic 13th Birthday BBQ Bash: The Infographic</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<!--
+    Narrative & Structure Plan:
+    1.  Hero Section: Hook with the core facts (13th Birthday, 10 Friends, S$200 Budget) using large stats.
+    2.  Location Map Section: A placeholder link for a custom map image.
+    3.  Project Team Section: Introduce the "Party Committee" using styled cards to highlight each role.
+    4.  Org Chart Section: A visual representation of the party planning team structure.
+    5.  Budget Breakdown Section: Visualize the S$204.06 budget with a donut chart and a bar chart.
+    6.  Timeline Section: Display the UPDATED party schedule (Function Room 5pm-10pm, BBQ 6pm-10pm).
+    7.  Download Section: A call-to-action button to download the full plan.
+    8.  Language Switcher: A toggle to switch content between English and Chinese.
+    
+    Visualization Plan:
+    -   Data Point: Location Route -> Goal: Organize -> Visualization: HTML link. Method: A styled anchor tag for user to insert their own map image URL.
+    -   All other visualizations remain the same as the previous version.
+    -   NO SVG was used anywhere in the output.
+    -   NO MERMAID JS was used anywhere in the output.
+
+    Color Palette Selection:
+    -   Chosen Palette: "Energetic & Playful".
+    -   HEX Codes Used: #F97316 (Orange), #14B8A6 (Teal), #FBBF24 (Yellow), #1E293B (Text), #f8fafc (Background).
+    -->
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 2.5rem;
+            bottom: -2.5rem;
+            width: 4px;
+            background-color: #e2e8f0;
+            z-index: 0;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .org-chart .node {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 2px solid #e2e8f0;
+            background-color: white;
+            text-align: center;
+        }
+        .org-chart .lead {
+            border-color: #F97316;
+            background-color: #fff7ed;
+        }
+        .org-chart-connections {
+            position: relative;
+            width: 100%;
+            height: 2rem;
+        }
+        .org-chart-connections .vertical-line {
+            height: 100%;
+            width: 4px;
+            background-color: #e2e8f0;
+            margin: 0 auto;
+        }
+        .org-chart-connections .horizontal-line {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            right: 25%;
+            height: 4px;
+            background-color: #e2e8f0;
+        }
+        @media (max-width: 767px) {
+            .org-chart-connections .horizontal-line {
+                left: 0;
+                right: 0;
+            }
+        }
+        .lang-switch-container {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 50;
+        }
+        .lang-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .lang-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .lang-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .lang-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .lang-slider {
+            background-color: #F97316;
+        }
+        input:checked + .lang-slider:before {
+            transform: translateX(26px);
+        }
+    
+    h1, h2, h3 {
+        font-weight: 900;
+    }
+    p, span, a, button {
+        font-size: 1.05rem;
+    }
+    .rounded-2xl {
+        border-radius: 1.25rem;
+    }
+    .shadow-xl {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .roblox-button {
+        background: linear-gradient(to bottom right, #F97316, #FBBF24);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    body {
+        font-family: 'Bowlby One SC', cursive;
+    }
+    
+    body {
+        background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+        background-size: 120px 120px;
+    }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&amp;display=swap" rel="stylesheet"/></head>
+<body class="text-slate-800">
+<div class="lang-switch-container">
+<span class="font-bold text-slate-600" data-key="lang_en">EN</span>
+<label class="lang-switch">
+<input id="languageToggle" type="checkbox"/>
+<span class="lang-slider"></span>
+</label>
+<span class="font-bold text-slate-600" data-key="lang_zh">中</span>
+</div>
+<div class="container mx-auto p-4 md:p-8">
+<header class="text-center mb-12 pt-12">
+<h1 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight" data-key="header_title">LEVEL UP: ZHONGYU IS 13!</h1>
+<p class="text-lg md:text-xl mt-4 text-slate-600 max-w-3xl mx-auto" data-key="header_subtitle">Here's the master plan for an epic birthday BBQ bash at Eastpoint Green. Get ready for a day of awesome food, intense games, and non-stop fun!</p>
+</header><img alt="Zhongyu Roblox Avatar" class="mx-auto rounded-full shadow-lg mt-6 mb-4" src="https://placehold.co/200x200/1E40AF/FFFFFF?text=Zhongyu+Avatar"/>
+<section class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-16" id="kpis">
+<div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 shadow-xl">
+<p class="text-5xl font-bold text-orange-500">10</p>
+<p class="text-lg font-bold mt-2" data-key="kpi_friends">Best Friends Invited</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 shadow-xl">
+<p class="text-5xl font-bold text-teal-500">S$200</p>
+<p class="text-lg font-bold mt-2" data-key="kpi_budget">Food &amp; Supplies Budget</p>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 shadow-xl">
+<p class="text-5xl font-bold text-yellow-500">2</p>
+<p class="text-lg font-bold mt-2" data-key="kpi_zones">Party Zones</p>
+<p class="text-sm text-slate-500" data-key="kpi_zones_detail">(BBQ Pit &amp; Clubhouse)</p>
+</div>
+<div class="flex flex-wrap justify-center gap-4 mt-6"><div class="bg-yellow-300 text-slate-900 font-bold px-4 py-2 rounded-full shadow-md text-sm">Grill Master</div><div class="bg-yellow-300 text-slate-900 font-bold px-4 py-2 rounded-full shadow-md text-sm">Game Champion</div><div class="bg-yellow-300 text-slate-900 font-bold px-4 py-2 rounded-full shadow-md text-sm">Party MVP</div></div></section>
+<section class="mb-16" id="location-map">
+<div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100 text-center">
+<h2 class="text-3xl font-bold text-center mb-2" data-key="map_title">Location Map</h2>
+<p class="text-center text-slate-600 mb-6 max-w-2xl mx-auto" data-key="map_subtitle">A simple map to get from Bedok Green Secondary School to the party at Eastpoint Green.</p>
+<div class="mt-4"><img alt="Map from Bedok Green to Eastpoint Green" class="mx-auto rounded-xl shadow-xl max-w-full" src="map.png"/></div>
+</div>
+</section>
+<section class="mb-16" id="team"><img alt="Team Image" class="mx-auto mb-6 rounded-xl shadow-xl max-w-full" src="https://placehold.co/800x300/F97316/FFFFFF?text=Party+Team+In+Action"/>
+<div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100">
+<h2 class="text-3xl font-bold text-center mb-2" data-key="team_title">The Party Committee</h2>
+<p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto" data-key="team_subtitle">An epic party needs an epic team. Zhongyu has assembled a crew of his closest friends to help with the planning, making it *our* party, not just his.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center rounded-2xl shadow-xl bg-white">
+<div class="bg-slate-50 p-6 rounded-xl border border-slate-200 rounded-2xl shadow-xl bg-white">
+<p class="text-5xl mb-3">🎮</p>
+<h3 class="text-xl font-bold text-slate-900" data-key="team_role1_title">The Games Master</h3>
+<p class="text-slate-600 mt-1" data-key="team_role1_desc">In charge of brainstorming hilarious games for the "Clubhouse Championship."</p>
+</div>
+<div class="bg-slate-50 p-6 rounded-xl border border-slate-200 rounded-2xl shadow-xl bg-white">
+<p class="text-5xl mb-3">🎶</p>
+<h3 class="text-xl font-bold text-slate-900" data-key="team_role2_title">The Music Maestro</h3>
+<p class="text-slate-600 mt-1" data-key="team_role2_desc">Curating the ultimate party playlist on a collaborative Spotify playlist for all to enjoy.</p>
+</div>
+<div class="bg-slate-50 p-6 rounded-xl border border-slate-200 rounded-2xl shadow-xl bg-white">
+<p class="text-5xl mb-3">🎨</p>
+<h3 class="text-xl font-bold text-slate-900" data-key="team_role3_title">The Decorations Chief</h3>
+<p class="text-slate-600 mt-1" data-key="team_role3_desc">Tasked with creating the perfect party vibe with cool, simple decorations.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-16" id="org-chart"><img alt="Org-chart Image" class="mx-auto mb-6 rounded-xl shadow-xl max-w-full" src="https://placehold.co/800x300/14B8A6/FFFFFF?text=Team+Hierarchy"/>
+<div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100 org-chart">
+<h2 class="text-3xl font-bold text-center mb-8" data-key="org_title">Party Organization Chart</h2>
+<div class="flex flex-col items-center">
+<div class="node lead w-full max-w-xs rounded-2xl shadow-xl bg-white">
+<h3 class="text-xl font-bold text-slate-900">Zhongyu</h3>
+<p class="text-orange-600 font-semibold" data-key="org_role_lead">Project Lead (The Birthday Boy)</p>
+</div>
+<div class="org-chart-connections">
+<div class="vertical-line"></div>
+</div>
+<div class="w-full">
+<div class="org-chart-connections hidden md:block">
+<div class="horizontal-line"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12 relative">
+<div class="md:hidden org-chart-connections"><div class="vertical-line"></div></div>
+<div class="node relative rounded-2xl shadow-xl bg-white">
+<h3 class="text-xl font-bold text-slate-900" data-key="org_role1_title">Games Master</h3>
+<p class="text-teal-600 font-semibold" data-key="org_role1_en">Games Master</p>
+</div>
+<div class="md:hidden org-chart-connections"><div class="vertical-line"></div></div>
+<div class="node relative rounded-2xl shadow-xl bg-white">
+<h3 class="text-xl font-bold text-slate-900" data-key="org_role2_title">Music Maestro</h3>
+<p class="text-teal-600 font-semibold" data-key="org_role2_en">Music Maestro</p>
+</div>
+<div class="md:hidden org-chart-connections"><div class="vertical-line"></div></div>
+<div class="node relative rounded-2xl shadow-xl bg-white">
+<h3 class="text-xl font-bold text-slate-900" data-key="org_role3_title">Decorations Chief</h3>
+<p class="text-teal-600 font-semibold" data-key="org_role3_en">Decorations Chief</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-16" id="budget">
+<h2 class="text-3xl font-bold text-center mb-8" data-key="budget_title">The S$200 Food Mission</h2>
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-8 rounded-2xl shadow-xl bg-white">
+<div class="lg:col-span-2 bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100 flex flex-col">
+<h3 class="text-2xl font-bold text-center mb-2" data-key="budget_donut_title">Budget Allocation</h3>
+<p class="text-center text-slate-600 mb-4" data-key="budget_donut_desc">The plan squeezes every dollar to maximize the feast. The total estimated cost is S$204.06, with the majority going towards food and drinks.</p>
+<div class="chart-container flex-grow rounded-2xl shadow-xl bg-white">
+<canvas id="budgetDonutChart"></canvas>
+</div>
+</div>
+<div class="lg:col-span-3 bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100 flex flex-col">
+<h3 class="text-2xl font-bold text-center mb-2" data-key="budget_bar_title">Food Cost Breakdown</h3>
+<p class="text-center text-slate-600 mb-4" data-key="budget_bar_desc">Feeding 11 hungry teenagers requires a solid strategy. Here's where the food budget is going, with meat being the biggest expense.</p>
+<div class="relative flex-grow w-full max-w-3xl mx-auto min-h-[350px] rounded-2xl shadow-xl bg-white">
+<canvas id="foodBarChart"></canvas>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-16" id="timeline"><img alt="Timeline Image" class="mx-auto mb-6 rounded-xl shadow-xl max-w-full" src="https://placehold.co/800x300/FBBF24/FFFFFF?text=Party+Timeline"/>
+<div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100">
+<h2 class="text-3xl font-bold text-center mb-2" data-key="timeline_title">Party Day Blueprint</h2>
+<p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto" data-key="timeline_subtitle">A detailed schedule ensures the party runs smoothly from setup to cleanup, based on the official booking times.</p>
+<div class="relative">
+<div class="space-y-12">
+<div class="timeline-item relative flex items-center w-full">
+<div class="w-1/2 flex justify-end">
+<div class="text-right pr-8">
+<p class="font-bold text-orange-500 text-lg">5:00 PM</p>
+<h3 class="font-bold text-xl mt-1" data-key="timeline1_title">Arrival &amp; Clubhouse Chill</h3>
+<p class="text-slate-600" data-key="timeline1_desc">Guests arrive. Hang out in the cool function room, listen to music, and have some snacks.</p>
+</div>
+</div>
+<div class="w-10 h-10 bg-orange-500 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">1</div>
+<div class="w-1/2"></div>
+</div>
+<div class="timeline-item relative flex items-center w-full">
+<div class="w-1/2"></div>
+<div class="w-10 h-10 bg-teal-500 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">2</div>
+<div class="w-1/2 flex justify-start">
+<div class="text-left pl-8">
+<p class="font-bold text-teal-500 text-lg">6:00 PM</p>
+<h3 class="font-bold text-xl mt-1" data-key="timeline2_title">BBQ Time!</h3>
+<p class="text-slate-600" data-key="timeline2_desc">Move to the BBQ pit. Start grilling the food and let the feast begin!</p>
+</div>
+</div>
+</div>
+<div class="timeline-item relative flex items-center w-full">
+<div class="w-1/2 flex justify-end">
+<div class="text-right pr-8">
+<p class="font-bold text-yellow-500 text-lg">8:00 PM</p>
+<h3 class="font-bold text-xl mt-1" data-key="timeline3_title">Cake &amp; Clubhouse Games</h3>
+<p class="text-slate-600" data-key="timeline3_desc">Back to the clubhouse for the main event: birthday cake, followed by the Games Championship.</p>
+</div>
+</div>
+<div class="w-10 h-10 bg-yellow-500 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">3</div>
+<div class="w-1/2"></div>
+</div>
+<div class="timeline-item relative flex items-center w-full">
+<div class="w-1/2"></div>
+<div class="w-10 h-10 bg-slate-800 rounded-full z-10 shrink-0 flex items-center justify-center text-white font-bold shadow-md">4</div>
+<div class="w-1/2 flex justify-start">
+<div class="text-left pl-8">
+<p class="font-bold text-slate-800 text-lg">9:45 PM</p>
+<h3 class="font-bold text-xl mt-1" data-key="timeline4_title">Wind Down &amp; Farewell</h3>
+<p class="text-slate-600" data-key="timeline4_desc">Last few songs, say goodbyes. The epic party concludes at 10 PM.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-16" id="download">
+<div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-slate-100 text-center">
+<h2 class="text-3xl font-bold text-center mb-4" data-key="download_title">Download Details</h2>
+<p class="text-slate-600 mb-6 max-w-2xl mx-auto" data-key="download_desc">Want to see the full plan? Click the button below to get the detailed PDF document, complete with shopping lists and timelines.</p>
+<a class="roblox-button" data-key="download_button_text" download="" href="My Epic 13th Birthday BBQ Bash.pdf" id="downloadButton">
+                    Download Full Plan (PDF)
+                 </a>
+<p class="text-xs text-slate-400 mt-4" data-key="download_note">Will download file: "Zhongyus Epic Birthday Plan.pdf"</p>
+</div>
+</section>
+<footer class="text-center mt-16 pt-8 border-t border-slate-200">
+<p class="text-slate-500" data-key="footer_text">Infographic created for Zhongyu's Epic 13th Birthday Celebration.</p>
+<p class="text-xs text-slate-400 mt-2" data-key="footer_date">Based on the master plan from June 30, 2025.</p>
+</footer>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let budgetDonutChart, foodBarChart;
+            let currentLanguage = 'en';
+
+            const translations = {
+                header_title: { en: 'LEVEL UP: ZHONGYU IS 13!', zh: '等级提升：Zhongyu 13岁啦！' },
+                header_subtitle: { en: "Here's the master plan for an epic birthday BBQ bash at Eastpoint Green. Get ready for a day of awesome food, intense games, and non-stop fun!", zh: '这是在Eastpoint Green举办史诗级生日烧烤派对的终极计划。准备好迎接美食、游戏和无尽乐趣的一天吧！' },
+                kpi_friends: { en: 'Best Friends Invited', zh: '位受邀的挚友' },
+                kpi_budget: { en: 'Food & Supplies Budget', zh: '食品与物资预算' },
+                kpi_zones: { en: 'Party Zones', zh: '个派对区域' },
+                kpi_zones_detail: { en: '(BBQ Pit & Clubhouse)', zh: '(烧烤台和会所)' },
+                map_title: { en: 'Location Map', zh: '位置示意图' },
+                map_subtitle: { en: 'A simple map to get from Bedok Green Secondary School to the party at Eastpoint Green.', zh: '从育青中学到东福园派对地点的简易示意图。' },
+                map_link_text: { en: 'Click to view map (Paste your map image link here)', zh: '点击查看地图（在此处粘贴你的地图图片链接）' },
+                map_link_instruction: { en: 'Please replace the link above with your own map image URL.', zh: '请将上面的链接替换为您自己的地图图片URL。' },
+                team_title: { en: 'The Party Committee', zh: '派对策划委员会' },
+                team_subtitle: { en: 'An epic party needs an epic team. Zhongyu has assembled a crew of his closest friends to help with the planning, making it *our* party, not just his.', zh: '一场史诗级派对需要一个史诗级团队。Zhongyu已召集他最亲密的朋友们组成小队协助策划，让这场派对成为“我们”的派对，而不仅仅是他一个人的。' },
+                team_role1_title: { en: 'The Games Master', zh: '游戏大师' },
+                team_role1_desc: { en: 'In charge of brainstorming hilarious games for the "Clubhouse Championship."', zh: '负责为“会所冠军赛”构思有趣的爆笑游戏。' },
+                team_role2_title: { en: 'The Music Maestro', zh: '音乐总监' },
+                team_role2_desc: { en: 'Curating the ultimate party playlist on a collaborative Spotify playlist for all to enjoy.', zh: '在Spotify上创建一个协作歌单，打造终极派对音乐列表。' },
+                team_role3_title: { en: 'The Decorations Chief', zh: '装饰主管' },
+                team_role3_desc: { en: 'Tasked with creating the perfect party vibe with cool, simple decorations.', zh: '负责用酷炫又简约的装饰品营造完美的派对氛围。' },
+                org_title: { en: 'Party Organization Chart', zh: '派对组织结构图' },
+                org_role_lead: { en: 'Project Lead (The Birthday Boy)', zh: '项目主管 (寿星)' },
+                org_role1_title: { en: 'Games Master', zh: '游戏大师' },
+                org_role1_en: { en: 'Games Master', zh: 'Games Master' },
+                org_role2_title: { en: 'Music Maestro', zh: '音乐总监' },
+                org_role2_en: { en: 'Music Maestro', zh: 'Music Maestro' },
+                org_role3_title: { en: 'Decorations Chief', zh: '装饰主管' },
+                org_role3_en: { en: 'Decorations Chief', zh: 'Decorations Chief' },
+                budget_title: { en: 'The S$200 Food Mission', zh: 'S$200美食任务' },
+                budget_donut_title: { en: 'Budget Allocation', zh: '预算分配' },
+                budget_donut_desc: { en: 'The plan squeezes every dollar to maximize the feast. The total estimated cost is S$204.06, with the majority going towards food and drinks.', zh: '该计划精打细算，旨在最大化美食体验。预计总花费为S$204.06，其中大部分用于食品和饮料。' },
+                budget_bar_title: { en: 'Food Cost Breakdown', zh: '食品成本明细' },
+                budget_bar_desc: { en: "Feeding 11 hungry teenagers requires a solid strategy. Here's where the food budget is going, with meat being the biggest expense.", zh: '要喂饱11个饥饿的青少年需要周密的策略。以下是食品预算的去向，其中肉类是最大的开销。' },
+                timeline_title: { en: 'Party Day Blueprint', zh: '派对日蓝图' },
+                timeline_subtitle: { en: 'A detailed schedule ensures the party runs smoothly from setup to cleanup, based on the official booking times.', zh: '根据官方预订时间制定的详细时间表，可确保派对从布置到清理都顺畅进行。' },
+                timeline1_title: { en: 'Arrival & Clubhouse Chill', zh: '抵达与会所放松' },
+                timeline1_desc: { en: 'Guests arrive. Hang out in the cool function room, listen to music, and have some snacks.', zh: '宾客抵达。在凉爽的活动室里放松，听音乐，吃零食。' },
+                timeline2_title: { en: 'BBQ Time!', zh: '烧烤时间！' },
+                timeline2_desc: { en: 'Move to the BBQ pit. Start grilling the food and let the feast begin!', zh: '前往烧烤区。开始烤制食物，让盛宴开始吧！' },
+                timeline3_title: { en: 'Cake & Clubhouse Games', zh: '蛋糕与会所游戏' },
+                timeline3_desc: { en: 'Back to the clubhouse for the main event: birthday cake, followed by the Games Championship.', zh: '返回会所进行主要活动：生日蛋糕，然后是游戏冠军赛。' },
+                timeline4_title: { en: 'Wind Down & Farewell', zh: '放松与告别' },
+                timeline4_desc: { en: 'Last few songs, say goodbyes. The epic party concludes at 10 PM.', zh: '最后几首歌，互相告别。史诗派对在晚上10点结束。' },
+                download_title: { en: 'Download Details', zh: '详情下载' },
+                download_desc: { en: 'Want to see the full plan? Click the button below to get the detailed PDF document, complete with shopping lists and timelines.', zh: '想要查看完整的策划方案吗？点击下方按钮即可获取详细的PDF文档，内含所有购物清单和时间规划。' },
+                download_button_text: { en: 'Download Full Plan (PDF)', zh: '下载完整策划方案 (PDF)' },
+                download_note: { en: 'Will download file: "Zhongyus Epic Birthday Plan.pdf"', zh: '将下载文件: "新加坡男孩生日派对计划（增强版）.pdf"' },
+                footer_text: { en: "Infographic created for Zhongyu's Epic 13th Birthday Celebration.", zh: '为Zhongyu的史诗级13岁生日庆典创作的信息图。' },
+                footer_date: { en: 'Based on the master plan from June 30, 2025.', zh: '基于2025年6月30日的总体规划。' },
+                donut_label_food: { en: 'Food & Drinks', zh: '食品与饮料' },
+                donut_label_supplies: { en: 'Supplies', zh: '物资' },
+                bar_chart_cost_label: { en: 'Cost (S$)', zh: '成本 (新元)' },
+                bar_chart_labels: {
+                    en: ['Meat (Wings, Burgers, Hot Dogs)', 'Veggie (Halloumi & Veg Skewers)', 'Drinks (Soda, Tea, Water)', 'Birthday Cake', 'Snacks & Dessert (Chips, Marshmallows)', 'Carbs (Buns)', 'Salad & Veggies', 'Condiments'],
+                    zh: ['肉类 (鸡翅, 汉堡, 热狗)', '素食 (哈罗米芝士和蔬菜串)', '饮品 (汽水, 茶, 水)', '生日蛋糕', '零食与甜点 (薯片, 棉花糖)', '主食 (面包)', '沙拉与蔬菜', '调味品']
+                },
+                lang_en: { en: 'EN', zh: 'EN'},
+                lang_zh: { en: '中', zh: '中'},
+            };
+
+            const commonTooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const wrapLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                let currentLine = '';
+                const lines = [];
+                words.forEach(word => {
+                    if ((currentLine + word).length > maxLength && currentLine.length > 0) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            function setLanguage(lang) {
+                currentLanguage = lang;
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[key] && translations[key][lang]) {
+                        element.innerHTML = translations[key][lang];
+                    }
+                });
+                updateCharts(lang);
+            }
+
+            function updateCharts(lang) {
+                if (budgetDonutChart) {
+                    budgetDonutChart.data.labels = [
+                        translations.donut_label_food[lang],
+                        translations.donut_label_supplies[lang]
+                    ];
+                    budgetDonutChart.update();
+                }
+
+                if (foodBarChart) {
+                    const translatedLabels = translations.bar_chart_labels[lang].map(wrapLabel);
+                    foodBarChart.data.labels = translatedLabels;
+                    foodBarChart.data.datasets[0].label = translations.bar_chart_cost_label[lang];
+                    foodBarChart.update();
+                }
+            }
+
+            function createCharts(lang) {
+                if (budgetDonutChart) budgetDonutChart.destroy();
+                if (foodBarChart) foodBarChart.destroy();
+
+                const budgetDonutCtx = document.getElementById('budgetDonutChart').getContext('2d');
+                budgetDonutChart = new Chart(budgetDonutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [translations.donut_label_food[lang], translations.donut_label_supplies[lang]],
+                        datasets: [{
+                            label: 'Budget Allocation',
+                            data: [174.06, 30.00],
+                            backgroundColor: ['#14B8A6', '#F97316'],
+                            borderColor: '#ffffff',
+                            borderWidth: 4,
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false, cutout: '60%',
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#1E293B', font: { size: 14, weight: 'bold' } } },
+                            tooltip: { ...commonTooltipCallback.plugins.tooltip, callbacks: { ...commonTooltipCallback.plugins.tooltip.callbacks, label: function(c) { let l = c.dataset.label||''; if(l){l+=': ';} if(c.parsed!==null){l+=new Intl.NumberFormat('en-SG',{style:'currency',currency:'SGD'}).format(c.parsed);}return l; } } }
+                        }
+                    }
+                });
+
+                const foodBarCtx = document.getElementById('foodBarChart').getContext('2d');
+                const foodLabels = translations.bar_chart_labels[lang].map(wrapLabel);
+                foodBarChart = new Chart(foodBarCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: foodLabels,
+                        datasets: [{
+                            label: translations.bar_chart_cost_label[lang],
+                            data: [58.20, 15.00, 25.40, 40.00, 14.58, 11.50, 10.65, 2.73],
+                            backgroundColor: ['#F97316', '#14B8A6', '#FBBF24', '#334155', '#fb923c', '#5eead4', '#fde047', '#94a3b8'],
+                            borderColor: '#ffffff', borderWidth: 2, borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                        scales: {
+                            x: { beginAtZero: true, grid: { display: true, color: '#e2e8f0' }, ticks: { color: '#475569', font: { size: 12 }, callback: v => 'S$'+v } },
+                            y: { grid: { display: false }, ticks: { color: '#1E293B', font: { size: 12, weight: 'bold' } } }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { ...commonTooltipCallback.plugins.tooltip, callbacks: { ...commonTooltipCallback.plugins.tooltip.callbacks, label: function(c){let l=c.dataset.label||'';if(l){l+=': ';}if(c.parsed.x!==null){l+=new Intl.NumberFormat('en-SG',{style:'currency',currency:'SGD'}).format(c.parsed.x);}return l;}}}
+                        }
+                    }
+                });
+            }
+            
+            createCharts(currentLanguage);
+            setLanguage(currentLanguage);
+
+            document.getElementById('languageToggle').addEventListener('change', function() {
+                setLanguage(this.checked ? 'zh' : 'en');
+            });
+        });
+    </script>
+</body>
+</html>
